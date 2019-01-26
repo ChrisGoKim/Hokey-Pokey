@@ -1,7 +1,8 @@
 extends Node2D
 
 
-enum test{PROGRAMMING, AUDIO, ART, DESIGN}
+enum skills{PROGRAMMING, AUDIO, ART, DESIGN}
+var state = 3
 
 var stats = [
 	randi() % 6, #programming
@@ -49,6 +50,7 @@ func _process(delta):
 		animPlaying = false
 		
 	print($Anim.is_playing())
+	addProgress(state)
 	pass
 
 ##ALL FUNCTIONALITY FOR UPGRADES
@@ -58,18 +60,57 @@ func boostStat(var num):
 	pass
 
 func _on_Upgrade_Programming_pressed():
-	boostStat(test.PROGRAMMING)
+	boostStat(skills.PROGRAMMING)
 	pass # replace with function body
 
 func _on_Upgrade_Audio_pressed():
-	boostStat(test.AUDIO)
+	boostStat(skills.AUDIO)
 	pass # replace with function body
 
 func _on_Upgrade_Art_pressed():
-	boostStat(test.ART)
+	boostStat(skills.ART)
 	pass # replace with function body
 
 func _on_Upgrade_Design_pressed():
-	boostStat(test.DESIGN)
+	boostStat(skills.DESIGN)
 	pass # replace with function body
 	
+func addProgress(var task):
+	#Calculation for progress bar. If you hit spacebar during a tick, it will give you a bonus based on your stats
+	var calculation = (.005 * stats[task])
+	if Input.is_action_just_pressed("progress_work"):
+		calculation += (.1 * stats[task])
+		pass
+	
+	if task == 0:
+		$"ProgressBars/Programming Bar".value += calculation
+	elif task == 1:
+		$"ProgressBars/Audio Bar".value += calculation
+	elif task == 2:
+		$"ProgressBars/Art Bar".value += calculation
+	elif task == 3:
+		$ProgressBars/DesignBar.value += calculation
+
+	pass
+	
+
+func _on_DesignBar_value_changed(value):
+	if $ProgressBars/DesignBar.value >= 100:
+		state = 0
+	pass # replace with function body
+
+func _on_Programming_Bar_value_changed(value):
+	if $"ProgressBars/Programming Bar".value >= 100:
+		state = 2
+	pass # replace with function body
+
+
+func _on_Art_Bar_value_changed(value):
+	if $"ProgressBars/Art Bar".value >= 100:
+		state = 1
+	pass # replace with function body
+
+func _on_Audio_Bar_value_changed(value):
+	if $"ProgressBars/Audio Bar".value >= 100:
+		pass#get money and upgrade chance
+	pass # replace with function body
