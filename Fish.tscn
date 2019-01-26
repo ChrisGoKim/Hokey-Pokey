@@ -4,7 +4,7 @@
 [ext_resource path="res://Micro Sprites/1.png" type="Texture" id=2]
 [ext_resource path="res://Micro Sprites/2.png" type="Texture" id=3]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
@@ -13,33 +13,55 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "Walk"
 length = 1.0
-loop = false
+loop = true
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AnimateFish:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="Fish" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimateFish" type="AnimatedSprite" parent="." index="0"]
 
 scale = Vector2( 0.117314, 0.117314 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "default"
-frame = 1
-playing = true
 
 [node name="Anim" type="AnimationPlayer" parent="." index="1"]
 
-root_node = NodePath("")
+root_node = NodePath("../AnimateFish")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 3.0
-anims/Walk = SubResource( 1 )
+playback_speed = 2.0
+anims/Walk = SubResource( 2 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause", "Playback Options" ]
 

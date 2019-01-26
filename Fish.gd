@@ -11,19 +11,44 @@ var stats = [
 ]
 
 var anim = ""
-
+var moving = false
+var animPlaying = false
 var canUpgrade = false
+var movement_speed = 2
 
 func _ready():
-	anim = "Walk"
-	$AnimateFish.play(anim)
-	#$AnimateFish.playing = true	
+	print("Ready")
 	pass
 
-func _fixed_process(delta):
+func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	
+	$Anim.playback_speed = movement_speed
+	if Input.is_action_pressed("ui_right"):
+		position.x += movement_speed
+		moving = true
+		$AnimateFish.flip_h = true
+	elif Input.is_action_pressed("ui_left"):
+		position.x += -movement_speed
+		moving = true
+		$AnimateFish.flip_h = false
+#	elif Input.is_action_pressed("ui_down"):
+#		position.y += 1
+#		moving = true
+#	elif Input.is_action_pressed("ui_up"):
+#		position.y += -1
+#		moving = true
+	else:
+		moving = false
+		
+	if moving and not animPlaying:
+		$Anim.play("Walk")
+		animPlaying = true
+	elif not moving and animPlaying:
+		$Anim.stop()
+		animPlaying = false
+		
+	print($Anim.is_playing())
 	pass
 
 ##ALL FUNCTIONALITY FOR UPGRADES
@@ -47,5 +72,4 @@ func _on_Upgrade_Art_pressed():
 func _on_Upgrade_Design_pressed():
 	boostStat(test.DESIGN)
 	pass # replace with function body
-
-
+	
