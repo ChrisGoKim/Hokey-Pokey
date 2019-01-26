@@ -18,6 +18,7 @@ var movement_speed = 2
 
 func _ready():
 	print("Ready")
+	print("Size", get_viewport().size)
 	$ProgressBars.hide()
 	$"Upgrade UI".hide()
 	$"Creation UI".show()
@@ -50,8 +51,6 @@ func _process(delta):
 	elif not moving and animPlaying:
 		$Anim.stop()
 		animPlaying = false
-		
-	print($Anim.is_playing())
 	
 	if isCreating == true:
 		addProgress(state)
@@ -66,30 +65,34 @@ func boostStat(var num):
 func _on_Upgrade_Programming_pressed():
 	boostStat(skills.PROGRAMMING)
 	$"Upgrade UI".hide()
+	$"Creation UI".show()
 	pass # replace with function body
 
 func _on_Upgrade_Audio_pressed():
 	boostStat(skills.AUDIO)
 	$"Upgrade UI".hide()
+	$"Creation UI".show()
 	pass # replace with function body
 
 func _on_Upgrade_Art_pressed():
 	boostStat(skills.ART)
 	$"Upgrade UI".hide()
+	$"Creation UI".show()
 	pass # replace with function body
 
 func _on_Upgrade_Design_pressed():
 	boostStat(skills.DESIGN)
 	$"Upgrade UI".hide()
+	$"Creation UI".show()
 	pass # replace with function body
 	
 
 	
 	
-	
+	#Game Progress
 func addProgress(var task):
 	#Calculation for progress bar. If you hit 'p' during a tick, it will give you a bonus based on your stats
-	var calculation = (.005 * stats[task]) #.005
+	var calculation = (.2 * stats[task]) #.005
 	if Input.is_action_just_pressed("progress_work"):
 		calculation += (.1 * stats[task])
 		pass
@@ -102,7 +105,7 @@ func addProgress(var task):
 		$"ProgressBars/Art Bar".value += calculation
 	elif task == 3:
 		$ProgressBars/DesignBar.value += calculation
-
+	
 	pass
 	
 
@@ -129,11 +132,21 @@ func _on_Audio_Bar_value_changed(value):
 	if $"ProgressBars/Audio Bar".value >= 100:
 		stats[1] += 2
 		$"Upgrade UI".show()
+		resetBar()
 	pass # replace with function body
 
+func resetBar():
+	$ProgressBars/DesignBar.value = 0
+	$"ProgressBars/Art Bar".value = 0
+	$"ProgressBars/Audio Bar".value = 0
+	$"ProgressBars/Programming Bar".value = 0
+	$ProgressBars.hide()
+	isCreating = false
+	state = 3
+	pass
 
 
-
+#Game Menu
 func _on_Basic_Game_pressed():
 	$"Creation UI".hide()
 	$ProgressBars.show()

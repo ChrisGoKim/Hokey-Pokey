@@ -162,6 +162,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Creation UI" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
 position = Vector2( -6.62501, -71.3749 )
 scale = Vector2( 1.47265, 1.47265 )
 z_index = 7
@@ -387,6 +388,8 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="ProgressBars" type="Node2D" parent="." index="5"]
+
+editor/display_folded = true
 
 [node name="DesignBar" type="ProgressBar" parent="ProgressBars" index="0"]
 

@@ -7,5 +7,6 @@
 [node name="Fish" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 513.986, 298.036 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 
