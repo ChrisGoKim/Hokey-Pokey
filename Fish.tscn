@@ -160,13 +160,68 @@ anti_aliasing_size = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="AnimateFish" type="AnimatedSprite" parent="." index="0"]
+[node name="Creation UI" type="Node2D" parent="." index="0"]
+
+position = Vector2( -6.62501, -71.3749 )
+scale = Vector2( 1.47265, 1.47265 )
+z_index = 7
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Basic Game" type="Button" parent="Creation UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -86.0
+margin_top = -23.0
+margin_right = 91.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Basic Game"
+flat = false
+align = 1
+
+[node name="Intro" type="Label" parent="Creation UI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -41.0
+margin_top = -46.0
+margin_right = 50.0
+margin_bottom = -32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Make a Game!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimateFish" type="AnimatedSprite" parent="." index="1"]
 
 scale = Vector2( 0.117314, 0.117314 )
+z_index = -1
 frames = SubResource( 1 )
 animation = "default"
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Anim" type="AnimationPlayer" parent="." index="1"]
+[node name="Anim" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("../AnimateFish")
 autoplay = ""
@@ -177,7 +232,7 @@ anims/Walk = SubResource( 2 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause", "Playback Options" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 
 anchor_mode = 1
 rotating = false
@@ -202,7 +257,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Upgrade UI" type="Node2D" parent="." index="3"]
+[node name="Upgrade UI" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
 
@@ -227,7 +282,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Upgrade"
+text = "Programming"
 flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Margin" ]
@@ -253,7 +308,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Upgrade"
+text = "Audio"
 flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Margin" ]
@@ -278,7 +333,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Upgrade"
+text = "Art"
 flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Margin" ]
@@ -304,12 +359,34 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Upgrade"
+text = "Design"
 flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="ProgressBars" type="Node2D" parent="." index="4"]
+[node name="Upgrades Text" type="Label" parent="Upgrade UI" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 314.0
+margin_top = -235.0
+margin_right = 387.0
+margin_bottom = -221.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Upgrades!"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ProgressBars" type="Node2D" parent="." index="5"]
 
 [node name="DesignBar" type="ProgressBar" parent="ProgressBars" index="0"]
 
@@ -463,9 +540,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 201.0
-margin_top = 221.0
+margin_top = 220.0
 margin_right = 394.0
-margin_bottom = 241.0
+margin_bottom = 240.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -503,7 +580,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Stats UI" type="Node2D" parent="." index="5"]
+[node name="Stats UI" type="Node2D" parent="." index="6"]
+
+position = Vector2( -408.749, -70.2499 )
+scale = Vector2( 1.07031, 3.61718 )
+
+[connection signal="pressed" from="Creation UI/Basic Game" to="." method="_on_Basic_Game_pressed"]
+
+[connection signal="hide" from="Upgrade UI" to="." method="_on_Upgrade_UI_hide"]
 
 [connection signal="pressed" from="Upgrade UI/Upgrade Programming" to="." method="_on_Upgrade_Programming_pressed"]
 

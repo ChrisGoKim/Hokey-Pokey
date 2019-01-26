@@ -1,9 +1,8 @@
 extends Node2D
 
-
 enum skills{PROGRAMMING, AUDIO, ART, DESIGN}
 var state = 3
-
+var isCreating = false
 var stats = [
 	randi() % 6, #programming
 	randi() % 6, #audio
@@ -19,6 +18,9 @@ var movement_speed = 2
 
 func _ready():
 	print("Ready")
+	$ProgressBars.hide()
+	$"Upgrade UI".hide()
+	$"Creation UI".show()
 	pass
 
 func _process(delta):
@@ -50,7 +52,9 @@ func _process(delta):
 		animPlaying = false
 		
 	print($Anim.is_playing())
-	addProgress(state)
+	
+	if isCreating == true:
+		addProgress(state)
 	pass
 
 ##ALL FUNCTIONALITY FOR UPGRADES
@@ -61,23 +65,31 @@ func boostStat(var num):
 
 func _on_Upgrade_Programming_pressed():
 	boostStat(skills.PROGRAMMING)
+	$"Upgrade UI".hide()
 	pass # replace with function body
 
 func _on_Upgrade_Audio_pressed():
 	boostStat(skills.AUDIO)
+	$"Upgrade UI".hide()
 	pass # replace with function body
 
 func _on_Upgrade_Art_pressed():
 	boostStat(skills.ART)
+	$"Upgrade UI".hide()
 	pass # replace with function body
 
 func _on_Upgrade_Design_pressed():
 	boostStat(skills.DESIGN)
+	$"Upgrade UI".hide()
 	pass # replace with function body
 	
+
+	
+	
+	
 func addProgress(var task):
-	#Calculation for progress bar. If you hit spacebar during a tick, it will give you a bonus based on your stats
-	var calculation = (.005 * stats[task])
+	#Calculation for progress bar. If you hit 'p' during a tick, it will give you a bonus based on your stats
+	var calculation = (.005 * stats[task]) #.005
 	if Input.is_action_just_pressed("progress_work"):
 		calculation += (.1 * stats[task])
 		pass
@@ -97,20 +109,33 @@ func addProgress(var task):
 func _on_DesignBar_value_changed(value):
 	if $ProgressBars/DesignBar.value >= 100:
 		state = 0
+		stats[3] += 2
 	pass # replace with function body
 
 func _on_Programming_Bar_value_changed(value):
 	if $"ProgressBars/Programming Bar".value >= 100:
 		state = 2
+		stats[0] += 2
 	pass # replace with function body
 
 
 func _on_Art_Bar_value_changed(value):
 	if $"ProgressBars/Art Bar".value >= 100:
 		state = 1
+		stats[2] += 2
 	pass # replace with function body
 
 func _on_Audio_Bar_value_changed(value):
 	if $"ProgressBars/Audio Bar".value >= 100:
-		pass#get money and upgrade chance
+		stats[1] += 2
+		$"Upgrade UI".show()
+	pass # replace with function body
+
+
+
+
+func _on_Basic_Game_pressed():
+	$"Creation UI".hide()
+	$ProgressBars.show()
+	isCreating = true
 	pass # replace with function body
