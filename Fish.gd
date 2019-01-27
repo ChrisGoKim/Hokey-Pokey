@@ -169,6 +169,10 @@ func _on_Basic_Game_pressed():
 
 func updateStatLabels():
 	$"Stats UI/MoneyLabel".text = ("Money: %d" % money)
+	$"Stats UI/ProgrammingLabel".text = ("Programming: %d" % stats[PROGRAMMING])
+	$"Stats UI/ArtLabel".text = ("Art: %d" % stats[ART])
+	$"Stats UI/DesignLabel".text = ("Design: %d" % stats[DESIGN])
+	$"Stats UI/AudioLabel".text = ("Audio: %d" % stats[AUDIO])
 	pass
 
 

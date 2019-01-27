@@ -15,11 +15,14 @@ func _ready():
 	pass
 
 func _process(delta):
-	if isActive:
+	if isActive == true:
 	#	# Called every frame. Delta is time since last frame.
 	#	# Update game logic here.
 		control()
 	#	pass
+	if Input.is_action_just_pressed("pass_test"):
+		isDone = true
+		isActive = false
 
 func control():
 	if Input.is_action_pressed("ui_right"):
@@ -32,5 +35,5 @@ func control():
 func run_minigame():
 	timer = 500
 	if randi()%3 == 0:
-		$ColorRect.color = Color(
-	
+		$ColorRect.color = Color()
+	pass
