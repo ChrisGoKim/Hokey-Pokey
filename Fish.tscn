@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fish.gd" type="Script" id=1]
 [ext_resource path="res://Macro Sprites/Fish1 1.png" type="Texture" id=2]
@@ -158,7 +158,35 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="Fish" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.417969, 0.333145, 0.132248, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[node name="Fish" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -587,10 +615,112 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Stats UI" type="Node2D" parent="." index="6"]
+[node name="Money UI" type="Node2D" parent="." index="6"]
 
-position = Vector2( -408.749, -70.2499 )
-scale = Vector2( 1.07031, 3.61718 )
+position = Vector2( -416.589, 165.249 )
+scale = Vector2( 1.16367, 1.00782 )
+
+[node name="Buy Food" type="Button" parent="Money UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -13.0
+margin_top = -389.0
+margin_right = 88.0
+margin_bottom = -346.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Buy Food"
+flat = false
+align = 1
+
+[node name="Hunger Bar" type="ProgressBar" parent="Money UI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -14.0
+margin_top = -429.0
+margin_right = 158.0
+margin_bottom = -398.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 7 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 65.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "custom_styles" ]
+
+[node name="Name" type="Label" parent="Money UI" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -7.0
+margin_top = -448.0
+margin_right = 50.0
+margin_bottom = -427.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Hunger"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Stats UI" type="Node2D" parent="." index="7"]
+
+position = Vector2( -432.732, 5.41276 )
+scale = Vector2( 1.5506, 1.59451 )
+
+[node name="MoneyLabel" type="Label" parent="Stats UI" index="0"]
+
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 9.0
+margin_right = 71.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Money: 10"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="pressed" from="Creation UI/Basic Game" to="." method="_on_Basic_Game_pressed"]
 
@@ -611,5 +741,9 @@ scale = Vector2( 1.07031, 3.61718 )
 [connection signal="value_changed" from="ProgressBars/Art Bar" to="." method="_on_Art_Bar_value_changed"]
 
 [connection signal="value_changed" from="ProgressBars/Audio Bar" to="." method="_on_Audio_Bar_value_changed"]
+
+[connection signal="pressed" from="Money UI/Buy Food" to="." method="_on_Buy_Food_pressed"]
+
+[connection signal="value_changed" from="Money UI/Hunger Bar" to="." method="_on_Hunger_Bar_value_changed"]
 
 
