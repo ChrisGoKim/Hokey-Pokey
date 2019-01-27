@@ -5,6 +5,7 @@ extends Node2D
 # var b = "textvar"
 var isDone = false
 var isActive = false
+var timer = 0
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -27,4 +28,9 @@ func control():
 		$MovingFish.move_left()
 	else:
 		$MovingFish.stopAnim()
+		
+func run_minigame():
+	timer = 500
+	if randi()%3 == 0:
+		$ColorRect.color = Color(
 	
