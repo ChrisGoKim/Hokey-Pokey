@@ -128,7 +128,7 @@ func _on_Audio_Bar_value_changed(value):
 		$"Upgrade UI".show()
 		$"Money UI".hide()
 		resetBar()
-		
+		giveRandomMoney(0)
 	pass # replace with function body
 
 func resetBar():

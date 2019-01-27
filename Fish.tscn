@@ -43,7 +43,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 0, 3, 1, 2 ]
 }
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -186,14 +186,13 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="Fish" type="Node2D"]
+[node name="Fish" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Creation UI" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( -6.62501, -71.3749 )
 scale = Vector2( 1.47265, 1.47265 )
 z_index = 7
@@ -220,7 +219,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Basic Game"
+text = "Indie Game"
 flat = false
 align = 1
 
@@ -240,10 +239,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.277344, 0.27301, 0.27301, 1 )
 text = "Make a Game!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="AnimateFish" type="AnimatedSprite" parent="." index="1"]
 
@@ -251,6 +253,7 @@ scale = Vector2( 0.174254, 0.204425 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "Main"
+frame = 2
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Anim" type="AnimationPlayer" parent="." index="2"]
@@ -291,8 +294,6 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 
 [node name="Upgrade UI" type="Node2D" parent="." index="4"]
-
-editor/display_folded = true
 
 [node name="Upgrade Programming" type="Button" parent="Upgrade UI" index="0"]
 
@@ -413,11 +414,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.335938, 0.314941, 0.314941, 1 )
 text = "Upgrades!"
 uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="ProgressBars" type="Node2D" parent="." index="5"]
 
@@ -425,7 +429,6 @@ editor/display_folded = true
 
 [node name="DesignBar" type="ProgressBar" parent="ProgressBars" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -465,6 +468,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.339844, 0.298691, 0.298691, 1 )
 text = "Design"
 percent_visible = 1.0
 lines_skipped = 0
@@ -473,7 +478,6 @@ _sections_unfolded = [ "Size Flags" ]
 
 [node name="Programming Bar" type="ProgressBar" parent="ProgressBars" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -513,6 +517,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.339844, 0.298691, 0.298691, 1 )
 text = "Programming"
 percent_visible = 1.0
 lines_skipped = 0
@@ -521,7 +527,6 @@ _sections_unfolded = [ "Size Flags" ]
 
 [node name="Art Bar" type="ProgressBar" parent="ProgressBars" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -561,6 +566,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.339844, 0.298691, 0.298691, 1 )
 text = "Art"
 percent_visible = 1.0
 lines_skipped = 0
@@ -569,7 +576,6 @@ _sections_unfolded = [ "Size Flags" ]
 
 [node name="Audio Bar" type="ProgressBar" parent="ProgressBars" index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -609,6 +615,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.339844, 0.298691, 0.298691, 1 )
 text = "Audio"
 percent_visible = 1.0
 lines_skipped = 0
@@ -688,11 +696,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.417969, 0.3396, 0.3396, 1 )
 text = "Hunger"
 uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="Stats UI" type="Node2D" parent="." index="7"]
 
