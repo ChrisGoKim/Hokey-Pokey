@@ -249,8 +249,8 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="AnimateFish" type="AnimatedSprite" parent="." index="1"]
 
-position = Vector2( 1.75681, 0 )
-scale = Vector2( 0.198722, 0.204425 )
+position = Vector2( 4.77121, 0 )
+scale = Vector2( 0.1999, 0.204425 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "Main"
