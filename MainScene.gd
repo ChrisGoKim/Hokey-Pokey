@@ -15,9 +15,10 @@ func _process(delta):
 		#$MINIGAME.SHOW()
 		#if $MINIGAME.ISDONE == TRUE:
 			#$Fish.isPlayingMiniGame == false
+		$Mini_Game1.show()
 	else:
 		$Fish.show()
-		#$MINIGAME.HIDE()
+		$Mini_Game1.hide()
 		#$MINIGAME.ISDONE == FALSE
 		pass
 

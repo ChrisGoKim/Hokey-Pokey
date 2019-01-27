@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1.png-942cae6ca878cadcab4b1e9ca13d884c.stex"
+path="res://.import/Fish_Walk_1.png-f3a688606b72d1a78016c397cfc10a8d.stex"
 
 [deps]
 
-source_file="res://Micro Sprites/1.png"
-dest_files=[ "res://.import/1.png-942cae6ca878cadcab4b1e9ca13d884c.stex" ]
+source_file="res://Micro Sprites/Fish_Walk_1.png"
+dest_files=[ "res://.import/Fish_Walk_1.png-f3a688606b72d1a78016c397cfc10a8d.stex" ]
 
 [params]
 
