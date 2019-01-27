@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Hokey Pokey"
-run/main_scene="res://MainScene.tscn"
+run/main_scene="res://StartScreen.tscn"
 config/icon="res://icon.png"
 
 [input]

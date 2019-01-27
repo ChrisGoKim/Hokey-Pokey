@@ -249,7 +249,8 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="AnimateFish" type="AnimatedSprite" parent="." index="1"]
 
-scale = Vector2( 0.174254, 0.204425 )
+position = Vector2( 1.75681, 0 )
+scale = Vector2( 0.198722, 0.204425 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "Main"
@@ -294,6 +295,8 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 
 [node name="Upgrade UI" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
 
 [node name="Upgrade Programming" type="Button" parent="Upgrade UI" index="0"]
 
@@ -424,8 +427,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_colors" ]
 
 [node name="ProgressBars" type="Node2D" parent="." index="5"]
-
-editor/display_folded = true
 
 [node name="DesignBar" type="ProgressBar" parent="ProgressBars" index="0"]
 
@@ -707,6 +708,7 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="Stats UI" type="Node2D" parent="." index="7"]
 
+editor/display_folded = true
 position = Vector2( -432.732, 5.41276 )
 scale = Vector2( 1.5506, 1.59451 )
 

@@ -84,7 +84,7 @@ func _on_Upgrade_Design_pressed():
 	#Game Progress
 func addProgress(var task):
 	#Calculation for progress bar. If you hit 'p' during a tick, it will give you a bonus based on your stats
-	var calculation = (.2 * stats[task]) #.005
+	var calculation = (.05 * stats[task]) #.005
 	if Input.is_action_just_pressed("progress_work"):
 		calculation += (.1 * stats[task])
 		pass
@@ -183,7 +183,7 @@ func updateStatLabels():
 
 #Hunger and Food
 func decreasingHunger():
-	$"Money UI/Hunger Bar".value -= .01
+	$"Money UI/Hunger Bar".value -= .1
 	pass
 
 
@@ -204,6 +204,6 @@ func giveRandomMoney(var num):
 
 func _on_Hunger_Bar_value_changed(value):
 	if $"Money UI/Hunger Bar".value <= 0:
-		get_tree().quit()
+		get_tree().change_scene("res://GameDone.tscn")
 	
 	pass # replace with function body
