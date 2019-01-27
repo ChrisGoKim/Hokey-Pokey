@@ -23,18 +23,24 @@ func _ready():
 func move_left():
 	print("Left")
 	$FishSprite.flip_h = false
-	position.x += -movement_speed
-	if not anim_running:
-		$Anim.play("Walking")
-		anim_running = true
+	if position.x > 0:
+		position.x += -movement_speed
+		if not anim_running:
+			$Anim.play("Walking")
+			anim_running = true
+	else:
+		stopAnim()
 
 func move_right():
 	print("Right")
 	$FishSprite.flip_h = true
-	position.x += movement_speed
-	if not anim_running:
-		$Anim.play("Walking")
-		anim_running = true
+	if position.x < 1024:
+		position.x += movement_speed
+		if not anim_running:
+			$Anim.play("Walking")
+			anim_running = true
+	else:
+		stopAnim()
 
 func stopAnim():
 	if anim_running:

@@ -12,6 +12,8 @@ var stats = [
 
 var isPlayingMiniGame = false
 
+var money = 50
+
 var anim = ""
 var moving = false
 var animPlaying = false
@@ -24,6 +26,8 @@ func _ready():
 	$ProgressBars.hide()
 	$"Upgrade UI".hide()
 	$"Creation UI".show()
+	$"Money UI".hide()
+	$"Stats UI".hide()
 	pass
 
 func _process(delta):
@@ -32,6 +36,7 @@ func _process(delta):
 	$Anim.playback_speed = movement_speed
 	if isCreating == true:
 		addProgress(state)
+		decreasingHunger()
 		if not animPlaying:
 			$Anim.play("Main")
 			animPlaying = true
@@ -39,6 +44,9 @@ func _process(delta):
 	if not isCreating:
 		$Anim.stop()
 		animPlaying = false
+		
+	updateStatLabels()
+	pass
 
 ##ALL FUNCTIONALITY FOR UPGRADES
 func boostStat(var num):
@@ -118,7 +126,9 @@ func _on_Audio_Bar_value_changed(value):
 	if $"ProgressBars/Audio Bar".value >= 100:
 		stats[1] += 2
 		$"Upgrade UI".show()
+		$"Money UI".hide()
 		resetBar()
+		
 	pass # replace with function body
 
 func resetBar():
@@ -140,10 +150,60 @@ func continueProgress():
 	isCreating = true
 	pass
 
+
+
+
+
+
+
+
 #Game Menu
 func _on_Basic_Game_pressed():
 	$"Creation UI".hide()
 	$ProgressBars.show()
+	$"Money UI".show()
+	$"Stats UI".show()
 	isCreating = true
 	pass # replace with function body
 
+
+func updateStatLabels():
+	$"Stats UI/MoneyLabel".text = ("Money: %d" % money)
+	$"Stats UI/ProgrammingLabel".text = ("Programming: %d" % stats[PROGRAMMING])
+	$"Stats UI/ArtLabel".text = ("Art: %d" % stats[ART])
+	$"Stats UI/DesignLabel".text = ("Design: %d" % stats[DESIGN])
+	$"Stats UI/AudioLabel".text = ("Audio: %d" % stats[AUDIO])
+	pass
+
+
+
+
+
+
+
+#Hunger and Food
+func decreasingHunger():
+	$"Money UI/Hunger Bar".value -= .01
+	pass
+
+
+func _on_Buy_Food_pressed():
+	if money >= 25:
+		money -= 25
+		$"Money UI/Hunger Bar".value += 5
+	
+	pass # replace with function body
+	
+func giveRandomMoney(var num):
+	if num == 0:#this is a basic game
+		money += 15*(randi()%10+1)
+	elif num == 1:
+		money += 20*(randi()%15+1)
+	pass
+
+
+func _on_Hunger_Bar_value_changed(value):
+	if $"Money UI/Hunger Bar".value <= 0:
+		get_tree().quit()
+	
+	pass # replace with function body

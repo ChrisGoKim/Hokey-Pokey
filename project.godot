@@ -18,6 +18,8 @@ config/icon="res://icon.png"
 
 progress_work=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
  ]
+pass_test=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":47,"unicode":0,"echo":false,"script":null)
+ ]
 
 [rendering]
 
