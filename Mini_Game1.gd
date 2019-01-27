@@ -33,7 +33,12 @@ func control():
 		$MovingFish.stopAnim()
 		
 func run_minigame():
-	timer = 500
-	if randi()%3 == 0:
-		$ColorRect.color = Color()
+	var rand = randi()%3
+	
+	if rand == 0:
+		$ColorRect1.color = Color("75ff94")
+	elif rand == 1:
+		$ColorRect2.color = Color("ed6e6e")
+	elif rand == 2:
+		$ColorRect3.color = Color("ed6e6e")
 	pass
