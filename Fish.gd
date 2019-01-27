@@ -183,7 +183,7 @@ func updateStatLabels():
 
 #Hunger and Food
 func decreasingHunger():
-	$"Money UI/Hunger Bar".value -= .1
+	$"Money UI/Hunger Bar".value -= .05
 	pass
 
 

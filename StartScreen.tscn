@@ -9,7 +9,7 @@
 [ext_resource path="res://MenuButton.gd" type="Script" id=7]
 [ext_resource path="res://StartSreenImages/fishoblue (1).png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 38
 use_mipmaps = true
@@ -17,7 +17,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 
 resource_local_to_scene = true
 size = 38
@@ -26,7 +26,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[node name="StartScroon" type="Container"]
+[node name="StartScroon" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -164,7 +164,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.644531, 0.461683, 0.362549, 1 )
 text = "QUIT"
@@ -240,7 +240,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.342972, 0.358145, 0.519531, 1 )
 text = "START"
@@ -252,9 +252,9 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
 
-[connection signal="hide" from="blinker" to="blinker" method="_on_blinker_hide"]
-
 [connection signal="hide" from="blinker" to="blinker" method="_on_TextureRect_hide"]
+
+[connection signal="hide" from="blinker" to="blinker" method="_on_blinker_hide"]
 
 [connection signal="pressed" from="Buttons/Quit" to="Buttons/Quit" method="_on_Quit_pressed"]
 
